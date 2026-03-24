@@ -1,0 +1,1000 @@
+/* ==========================================================================
+   CSS Variables & Theming System
+   ========================================================================== */
+:root {
+    /* Light Mode Constants */
+    --light-bg-color: #fcfaf8; /* Aesthetic cream white */
+    --light-surface-color: #ffffff; /* Clean white cards */
+    --light-text-primary: #1c1917; /* Warm dark brown-black */
+    --light-text-secondary: #78716c; /* Warm gray */
+    --light-border-color: #e7e5e4;
+    
+    /* Dynamic Theme Variables (Defaults to Light) */
+    --bg-color: var(--light-bg-color);
+    --surface-color: var(--light-surface-color);
+    --text-primary: var(--light-text-primary);
+    --text-secondary: var(--light-text-secondary);
+    --border-color: var(--light-border-color);
+    
+    /* Brand Colors */
+    --primary-color: #ff3366;
+    --primary-hover: #e62e5c;
+    --secondary-color: #20d2f4;
+    --tertiary-color: #8b5cf6;
+    --accent-glow: rgba(255, 51, 102, 0.2);
+    
+    /* Gradients */
+    --gradient-brand: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color));
+    
+    /* Layout properties */
+    --header-height: 80px;
+    --border-radius-sm: 10px;
+    --border-radius-md: 18px;
+    --border-radius-lg: 28px;
+    
+    /* Transitions */
+    --transition-speed: 0.3s;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #fafafa; /* Fallback */
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Application Wrapper & Aesthetic Orbs
+   ========================================================================== */
+.app-wrapper {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.header, .footer, .project-card, .btn, .marquee-content span, .detail-item {
+    transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+    /* Grid lines removed for cleaner aesthetic */
+
+@keyframes gridMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(40px); }
+}
+
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.5;
+    transition: all var(--transition-speed) ease;
+    animation: floatOrb 15s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-40px) scale(1.1); }
+}
+
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    top: -150px;
+    left: -150px;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    bottom: 20%;
+    right: -100px;
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    animation-delay: -5s;
+    animation-direction: alternate-reverse;
+}
+
+.theme-switch:checked ~ .app-wrapper .bg-orb {
+    opacity: 0.25;
+}
+
+.theme-switch:checked ~ .app-wrapper .orb-1 {
+    background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+}
+
+.theme-switch:checked ~ .app-wrapper .orb-2 {
+    background: linear-gradient(135deg, #c026d3, #2563eb);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 6rem 0;
+}
+
+/* ==========================================================================
+   Dark Mode Checkbox Hack (No JavaScript)
+   ========================================================================== */
+/* Hide the checkbox */
+.theme-switch, .hack-checkbox {
+    display: none;
+}
+
+/* When checked, update the css variables in the following sibling wrapper */
+.theme-switch:checked ~ .app-wrapper {
+    --bg-color: #0a0a0a; /* Premium aesthetic black */
+    --surface-color: #121212; /* Elevated pitch black */
+    --text-primary: #f5f5f5; /* Off-white text */
+    --text-secondary: #a3a3a3; /* Neutral aesthetic gray hover */
+    --border-color: rgba(255, 255, 255, 0.08); /* Ghost border */
+    --accent-glow: rgba(32, 210, 244, 0.05); /* Extremely subtle glow */
+}
+
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.header {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(var(--bg-color-rgb), 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-speed) var(--transition-timing), 
+                border-color var(--transition-speed) var(--transition-timing);
+}
+
+/* For backdrop-filter support across themes */
+:root { --bg-color-rgb: 252, 250, 248; }
+.theme-switch:checked ~ .app-wrapper { --bg-color-rgb: 10, 10, 10; }
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    background: var(--gradient-brand);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite alternate;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a, 
+.nav-links label {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links label:hover {
+    color: var(--primary-color);
+}
+
+/* Toggle UI */
+.toggle-label {
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.toggle-label:hover {
+    transform: scale(1.05);
+    background-color: var(--border-color);
+}
+
+.icon-moon {
+    display: none;
+    font-size: 1.2rem;
+}
+
+.icon-sun {
+    display: inline;
+    font-size: 1.2rem;
+}
+
+/* Swap icons when checkbox is checked */
+.theme-switch:checked ~ .app-wrapper .icon-sun {
+    display: none;
+}
+
+.theme-switch:checked ~ .app-wrapper .icon-moon {
+    display: inline;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 380px;
+    height: 480px;
+    background: var(--gradient-brand);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite alternate;
+    border-radius: calc(var(--border-radius-lg) + 5px);
+    z-index: 0;
+    filter: blur(25px);
+    opacity: 0.6;
+}
+
+.theme-switch:checked ~ .app-wrapper .hero-image-wrapper::before {
+    opacity: 0.8;
+}
+
+.profile-photo {
+    width: 350px;
+    height: 450px;
+    border-radius: var(--border-radius-lg);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.theme-switch:checked ~ .app-wrapper .profile-photo {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.profile-photo:hover img {
+    transform: scale(1.05);
+}
+
+.greeting {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: 4.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(-45deg, var(--text-primary) 30%, var(--primary-color), var(--secondary-color));
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite alternate;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+.description {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 3rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-primary {
+    background: var(--gradient-brand);
+    color: #fff;
+    border: none;
+    box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(99, 102, 241, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--surface-color);
+    border-color: var(--text-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    letter-spacing: -1px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-brand);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.theme-switch:checked ~ .app-wrapper .project-card {
+    background-color: rgba(20, 20, 26, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.theme-switch:checked ~ .app-wrapper .project-card:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.project-image {
+    height: 240px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.08);
+}
+
+.project-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-info h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+}
+
+.project-info p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.link-btn {
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex: 1;
+    text-align: center;
+}
+
+.code-link {
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.code-link:hover {
+    background-color: var(--surface-color);
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.demo-link {
+    background: var(--gradient-brand);
+    color: #fff;
+    border: 2px solid transparent;
+}
+
+.demo-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+    background-color: var(--surface-color);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+}
+
+.footer-brand p {
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    max-width: 320px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.footer-links, .footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-links h4, .footer-socials h4 {
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a, .footer-links label, .footer-socials a, .footer-socials label {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.footer-links a:hover, .footer-links label:hover, .footer-socials a:hover, .footer-socials label:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 900px) {
+    .title {
+        font-size: 3.5rem;
+    }
+    .subtitle {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        display: none; /* simple mobile nav approach */
+    }
+    
+    .hero {
+        text-align: center;
+    }
+    
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2.5rem;
+    }
+    
+    .profile-photo {
+        width: 100%;
+        max-width: 320px;
+        height: 400px;
+        margin: 0 auto;
+    }
+    
+    .hero-actions {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .title {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   Interactive Modals (Contact & Projects & About)
+   ========================================================================== */
+.popup-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.5s ease;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 450px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+}
+
+/* Projects Modal Specific Width & Scrolling */
+.projects-modal-content {
+    max-width: 1100px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-scrollbox {
+    overflow-y: auto;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+    flex-grow: 1;
+}
+
+/* Custom Scrollbar */
+.projects-scrollbox::-webkit-scrollbar {
+    width: 6px;
+}
+.projects-scrollbox::-webkit-scrollbar-track {
+    background: transparent;
+}
+.projects-scrollbox::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+/* Show Modals when Checkbox is Checked */
+#about-toggle:checked ~ .app-wrapper .about-modal,
+#contact-toggle:checked ~ .app-wrapper .contact-modal,
+#projects-toggle:checked ~ .app-wrapper .projects-modal,
+#testimonials-toggle:checked ~ .app-wrapper .testimonials-modal {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#about-toggle:checked ~ .app-wrapper .about-modal .modal-content,
+#contact-toggle:checked ~ .app-wrapper .contact-modal .modal-content,
+#projects-toggle:checked ~ .app-wrapper .projects-modal .modal-content,
+#testimonials-toggle:checked ~ .app-wrapper .testimonials-modal .modal-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.about-modal-content {
+    max-width: 1000px;
+    padding: 1rem 0;
+}
+
+.testimonials-modal-content {
+    max-width: 1100px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px; 
+    right: 20px;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+    color: var(--primary-color);
+}
+
+.contact-note {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: left;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 1.1rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+/* ==========================================================================
+   Contact Details
+   ========================================================================== */
+.contact-details {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   Testimonials (Trust Elements)
+   ========================================================================== */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.testimonial-card {
+    padding: 2.5rem;
+    justify-content: space-between;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.client-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+    box-shadow: 0 5px 15px var(--accent-glow);
+}
+
+.client-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.client-info span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Modern Entrance Animations
+   ========================================================================== */
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+
+/* ==========================================================================
+   Lively Marquee & Animated Backgrounds
+   ========================================================================== */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scrollMarquee 20s linear infinite;
+}
+
+.marquee-content span {
+    background: var(--surface-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 0.75rem)); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

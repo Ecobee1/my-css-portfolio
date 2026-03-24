@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob | Web Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+</head>
+
+<body>
+
+    <!-- Theme Toggle Hack -->
+    <input type="checkbox" id="theme-switch" class="theme-switch">
+    <!-- View Projects Toggle Hack -->
+    <input type="checkbox" id="projects-toggle" class="hack-checkbox">
+    <!-- Contact Modal Toggle Hack -->
+    <input type="checkbox" id="contact-toggle" class="hack-checkbox">
+    <!-- Testimonials Modal Toggle Hack -->
+    <input type="checkbox" id="testimonials-toggle" class="hack-checkbox">
+    <!-- About Modal Toggle Hack -->
+    <input type="checkbox" id="about-toggle" class="hack-checkbox">
+
+    <!-- Main Application Wrapper -->
+    <div class="app-wrapper">
+
+        <!-- Background Orbs for blurred aesthetic -->
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+
+        <!-- Header & Nav -->
+        <header class="header animate-fade-up">
+            <div class="container header-content">
+                <a href="#" class="logo">Jacob<span>.</span></a>
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><label for="about-toggle" class="nav-label" style="cursor: pointer;">About</label></li>
+                        <li><label for="projects-toggle" class="nav-label" style="cursor: pointer;">Projects</label>
+                        </li>
+                        <li><label for="testimonials-toggle" class="nav-label"
+                                style="cursor: pointer;">Testimonials</label></li>
+                        <li><label for="contact-toggle" class="nav-label" style="cursor: pointer;">Contact</label></li>
+                    </ul>
+
+                    <!-- Toggle Switch UI -->
+                    <label for="theme-switch" class="toggle-label" title="Toggle Theme">
+                        <span class="icon-sun">☀️</span>
+                        <span class="icon-moon">🌙</span>
+                    </label>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p class="greeting animate-fade-up delay-1">Hi there, I'm</p>
+                    <h1 class="title animate-fade-up delay-2">Jacob</h1>
+                    <h2 class="subtitle animate-fade-up delay-3">Front-End Developer & Designer</h2>
+                    <p class="description animate-fade-up delay-4" style="margin-bottom: 1.5rem;">
+                        I craft aesthetically pleasing, minimalist, and accessible web experiences.
+                        Passionate about clean code, intuitive user interfaces, and bridging the gap between design and
+                        engineering.
+                        With a strong focus on core web technologies, I specialize in building responsive architectures
+                        that perform flawlessly across all devices while maintaining a high-end, premium aesthetic.
+                    </p>
+                    <div class="marquee-container animate-fade-up delay-5">
+                        <div class="marquee-content">
+                            <span>✨ UI/UX Design</span>
+                            <span>💻 HTML & CSS</span>
+                            <span>📱 Responsive Layouts</span>
+                            <span>⚡ JavaScript</span>
+                            <span>🎨 CSS Animations</span>
+                            <span>🚀 Web Architecture</span>
+                            <!-- Duplicate items for seamless scroll -->
+                            <span>✨ UI/UX Design</span>
+                            <span>💻 HTML & CSS</span>
+                            <span>📱 Responsive Layouts</span>
+                            <span>⚡ JavaScript</span>
+                            <span>🎨 CSS Animations</span>
+                            <span>🚀 Web Architecture</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions animate-fade-up delay-6">
+                        <label for="projects-toggle" class="btn btn-primary">View My Work</label>
+                        <label for="contact-toggle" class="btn btn-secondary">Get in Touch</label>
+                    </div>
+                </div>
+                <!-- Personal Photo Statement / Placeholder -->
+                <div class="hero-image-wrapper animate-fade-up delay-6">
+                    <div class="profile-photo">
+                        <!-- Replace the src below with your actual photo URL -->
+                        <img src="c:\Users\jacob\OneDrive\Pictures\Camera Roll\photo_2026-01-13_14-12-09.jpg"
+                            alt="Jacob">
+                    </div>
+                </div>
+            </div>
+        </section> <!-- .hero -->
+
+        <!-- Projects Modal (Triggered by Checkbox Hack) -->
+        <div id="projects" class="popup-modal projects-modal">
+            <label for="projects-toggle" class="modal-overlay"></label>
+            <div class="modal-content projects-modal-content project-card">
+                <label for="projects-toggle" class="modal-close-btn">&times;</label>
+                <h2 class="section-title" style="margin-bottom: 2rem;">Selected Projects</h2>
+                <div class="projects-scrollbox">
+                    <div class="projects-grid">
+
+                        <!-- Project Card 1 -->
+                        <article class="project-card">
+                            <div class="project-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80');">
+                            </div>
+                            <div class="project-info">
+                                <h3>Interactive IT Portal</h3>
+                                <p>A centralized IT portal utilizing HTML iframes to seamlessly embed multiple content sources into a cohesive layout.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ecobee1/HTML-IT-portal-iframe-Gonzales-Jacob.git"
+                                        target="_blank" class="link-btn code-link">View Code</a>
+                                    <a href="https://html-it-portal-iframe-gonzales-jaco-chi.vercel.app/"
+                                        target="_blank" class="link-btn demo-link">Live Demo</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 2 -->
+                        <article class="project-card">
+                            <div class="project-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80');">
+                            </div>
+                            <div class="project-info">
+                                <h3>Interactive Project Demo</h3>
+                                <p>A modern showcase application demonstrating responsive layouts, interactive elements, and clean HTML coding practices.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ecobee1/HTML-IT-Project-Demo.git" target="_blank"
+                                        class="link-btn code-link">View Code</a>
+                                    <a href="https://html-it-project-demo-ten.vercel.app/" target="_blank"
+                                        class="link-btn demo-link">Live Demo</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 3 -->
+                        <article class="project-card">
+                            <div class="project-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=80');">
+                            </div>
+                            <div class="project-info">
+                                <h3>Student Schedule Viewer</h3>
+                                <p>A highly organized, responsive weekly class schedule table with custom styling to enhance productivity.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ecobee1/HTML-IT--Student-Schedule-Gonzales-Jacob.git"
+                                        target="_blank" class="link-btn code-link">View Code</a>
+                                    <a href="https://html-it-student-schedule-gonzales-j.vercel.app/" target="_blank"
+                                        class="link-btn demo-link">Live Demo</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 4 -->
+                        <article class="project-card">
+                            <div class="project-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80');">
+                            </div>
+                            <div class="project-info">
+                                <h3>Student Registration System</h3>
+                                <p>A structured, user-friendly academic registration form with comprehensive input fields and validation aesthetics.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ecobee1/HTML-Student-Registration-Form.git"
+                                        target="_blank" class="link-btn code-link">View Code</a>
+                                    <a href="https://html-student-registration-form.vercel.app/" target="_blank"
+                                        class="link-btn demo-link">Live Demo</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 5 -->
+                        <article class="project-card">
+                            <div class="project-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80');">
+                            </div>
+                            <div class="project-info">
+                                <h3>Lofi Study Playlist</h3>
+                                <p>An aesthetically pleasing music playlist interface designed to enhance focus during long coding and study sessions.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ecobee1/HTML-study-playlist-Gonzales-Jacob.git"
+                                        target="_blank" class="link-btn code-link">View Code</a>
+                                    <a href="https://html-study-playlist-gonzales-jacob.vercel.app/" target="_blank"
+                                        class="link-btn demo-link">Live Demo</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 6 -->
+                        <article class="project-card">
+                            <div class="project-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80');">
+                            </div>
+                            <div class="project-info">
+                                <h3>Secure User Setup Portal</h3>
+                                <p>A sleek, modern user account creation flow focusing on secure data input and smooth visual interactions.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ecobee1/HTML-User-Account-Creation-Form-Gonzales-Jacob.git"
+                                        target="_blank" class="link-btn code-link">View Code</a>
+                                    <a href="https://html-user-account-creation-form-gon.vercel.app/" target="_blank"
+                                        class="link-btn demo-link">Live Demo</a>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Elements: Testimonials Section -->
+        <section id="testimonials" class="section testimonials">
+            <div class="container animate-fade-up delay-6">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Trusted By</h2>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card project-card">
+                        <p class="quote">"Jacob's work on our dashboard was transformative. The glassmorphism effects he implemented are incredibly clean, making our complex data feel accessible and premium."</p>
+                        <div class="client-info">
+                            <div class="client-avatar">S</div>
+                            <div>
+                                <h4>Sarah Jenkins</h4>
+                                <span>Product Manager</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card project-card">
+                        <p class="quote">"I was blown away by the flawless responsive layout. The transition from desktop to mobile is seamless, and he achieved it all with incredibly clean CSS architecture."</p>
+                        <div class="client-info">
+                            <div class="client-avatar">M</div>
+                            <div>
+                                <h4>Marcus Rodriguez</h4>
+                                <span>Lead Engineer</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card project-card">
+                        <p class="quote">"Collaborating with Jacob was a breeze. He understands both design and development deeply. The dark mode implementation he built feels so lively and easy to read."</p>
+                        <div class="client-info">
+                            <div class="client-avatar">E</div>
+                            <div>
+                                <h4>Elena Rostova</h4>
+                                <span>UX Director</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card project-card">
+                        <p class="quote">"A masterclass in modern styling. He rebuilt our entire interface using pure CSS and HTML, significantly improving the load times while making it look gorgeous."</p>
+                        <div class="client-info">
+                            <div class="client-avatar">D</div>
+                            <div>
+                                <h4>David Kim</h4>
+                                <span>Founder</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card project-card">
+                        <p class="quote">"The attention to typography and visual hierarchy gave our internal tools a massive facelift. Highly recommend his front-end expertise."</p>
+                        <div class="client-info">
+                            <div class="client-avatar">A</div>
+                            <div>
+                                <h4>Amanda Chen</h4>
+                                <span>CTO</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact" class="footer">
+            <div class="container footer-content">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <a href="#" class="logo">Jacob<span>.</span></a>
+                        <p>Crafting aesthetic web experiences that perform flawlessly. Let's build something great.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Navigation</h4>
+                        <label for="about-toggle" class="nav-label" style="cursor: pointer;">About</label>
+                        <label for="projects-toggle" class="nav-label" style="cursor: pointer;">Projects</label>
+                        <label for="testimonials-toggle" class="nav-label" style="cursor: pointer;">Testimonials</label>
+                    </div>
+                    <div class="footer-socials">
+                        <h4>Connect</h4>
+                        <a href="https://github.com" target="_blank">Github</a>
+                        <a href="https://twitter.com" target="_blank">Twitter</a>
+                        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-bottom"
+                    style="text-align: center; justify-content: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <p>&copy; 2026 Jacob. Built securely with HTML & CSS.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Interactive Contact Modal (Triggered by Checkbox Hack) -->
+        <div class="popup-modal contact-modal">
+            <label for="contact-toggle" class="modal-overlay"></label>
+            <div class="modal-content project-card" style="max-width: 550px; padding: 2.5rem;">
+                <label for="contact-toggle" class="modal-close-btn">&times;</label>
+                <h2 style="margin-bottom: 0.5rem; font-size: 2rem;">Get in Touch</h2>
+                
+                <div class="contact-details" style="margin-top: 1.5rem; margin-bottom: 2rem; flex-direction: row; flex-wrap: wrap;">
+                    <div class="detail-item" style="flex: 1; padding: 0.8rem; font-size: 1rem; min-width: 180px;">
+                        <span>📧</span> jacob@etc.com
+                    </div>
+                    <div class="detail-item" style="flex: 1; padding: 0.8rem; font-size: 1rem; min-width: 180px;">
+                        <span>📱</span> +63 123 456 7890
+                    </div>
+                </div>
+
+                <p class="contact-note" style="margin-bottom: 1.5rem; margin-top: 0; font-size: 1.05rem; color: var(--text-secondary);">Or send a direct request below:</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Request sent successfully!');">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="text" placeholder="Your Name" required style="width: 100%; padding: 1rem; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-primary); font-family: inherit; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <input type="email" placeholder="Your Email" required style="width: 100%; padding: 1rem; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-primary); font-family: inherit; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <textarea placeholder="Your Request Description" rows="4" required style="width: 100%; padding: 1rem; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-primary); font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+                    <div class="trust-badge" style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: var(--text-secondary); font-size: 0.85rem;">
+                        <span>🔒</span> Secure Request Form
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Testimonials Modal (Triggered by Checkbox Hack) -->
+        <div class="popup-modal testimonials-modal">
+            <label for="testimonials-toggle" class="modal-overlay"></label>
+            <div class="modal-content testimonials-modal-content project-card">
+                <label for="testimonials-toggle" class="modal-close-btn">&times;</label>
+                <h2 class="section-title" style="margin-bottom: 2rem;">Client Testimonials</h2>
+                <div class="projects-scrollbox">
+                    <div class="testimonials-grid" style="text-align: left;">
+                        <article class="testimonial-card project-card"><p class="quote">"The glassmorphism effects are top-tier. He perfectly balanced the blur properties so it looks sleek without compromising readability."</p><div class="client-info"><div class="client-avatar">J</div><div><h4>James Wilson</h4><span>Engineering Manager</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"His dark mode toggle is incredibly smooth. The way the CSS variables transition colors is exactly what we envisioned for the rebrand."</p><div class="client-info"><div class="client-avatar">O</div><div><h4>Olivia Martinez</h4><span>Senior Designer</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"Amazing grid system implementation! Every widget perfectly aligns regardless of the screen size. Completely bug-free on all browsers."</p><div class="client-info"><div class="client-avatar">R</div><div><h4>Robert Fox</h4><span>Systems Architect</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"The subtle gradient animations inside the dashboard's header caught everyone's attention immediately. True 'vibe coder' energy."</p><div class="client-info"><div class="client-avatar">E</div><div><h4>Emily Taylor</h4><span>Creative Lead</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"Elegant code structure. The integration of modern CSS variables makes the UI unbelievably easy to scale for future updates."</p><div class="client-info"><div class="client-avatar">M</div><div><h4>Michael Chang</h4><span>Quality Assurance</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"Such a fluid user experience! It's extremely rare to see a data-heavy dashboard that is both visually stunning and highly readable."</p><div class="client-info"><div class="client-avatar">J</div><div><h4>Jessica Thompson</h4><span>Operations Director</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"The floating sidebars and hover micro-interactions give the whole application a sophisticated, high-end feel."</p><div class="client-info"><div class="client-avatar">D</div><div><h4>Daniel Wright</h4><span>Product Designer</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"I never thought standard HTML/CSS could look this incredible. The live background he added became a major selling point for our platform."</p><div class="client-info"><div class="client-avatar">S</div><div><h4>Sophia Lee</h4><span>Marketing Executive</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"The performance is lightning fast. He achieved buttery smooth animations without relying on heavy JavaScript frameworks."</p><div class="client-info"><div class="client-avatar">K</div><div><h4>Kevin Patel</h4><span>Frontend Team Lead</span></div></div></article>
+                        <article class="testimonial-card project-card"><p class="quote">"This is exactly what we needed. A beautiful, minimalist web interface that focuses purely on delivering an elite user experience."</p><div class="client-info"><div class="client-avatar">R</div><div><h4>Rachel Adams</h4><span>CEO</span></div></div></article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Modal (Triggered by Checkbox Hack) -->
+        <div class="popup-modal about-modal">
+            <label for="about-toggle" class="modal-overlay"></label>
+            <div class="modal-content about-modal-content project-card">
+                <label for="about-toggle" class="modal-close-btn">&times;</label>
+                <div class="projects-scrollbox" style="text-align: left; padding: 2.5rem 2rem;">
+                    <div
+                        style="display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; justify-content: center;">
+                        <div class="profile-photo"
+                            style="width: 250px; height: 320px; flex-shrink: 0; box-shadow: 0 15px 30px rgba(0,0,0,0.3);">
+                            <img src="c:\Users\jacob\OneDrive\Pictures\Camera Roll\photo_2026-01-13_14-12-09.jpg"
+                                alt="Jacob">
+                        </div>
+                        <div style="flex: 1; min-width: 300px; max-width: 500px;">
+                            <h3
+                                style="font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 800; letter-spacing: -1px;">
+                                Jacob</h3>
+                            <h4
+                                style="font-size: 1.15rem; color: var(--primary-color); margin-bottom: 1.5rem; font-weight: 600;">
+                                Front-End Engineer & UI/UX Specialist</h4>
+                            <p
+                                style="margin-bottom: 1.5rem; line-height: 1.8; color: var(--text-secondary); font-size: 1.05rem;">
+                                Hello! I'm a professional <strong style="color: var(--text-primary);">"Vibe
+                                    Coder"</strong> deeply passionate about crafting digital experiences that aren't
+                                just functional, but genuinely aesthetic and immersive. I specialize in merging raw,
+                                structured code with fluid, mesmerizing designs.
+                            </p>
+                            <p
+                                style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary); font-size: 1.05rem;">
+                                Over the years, I've honed my skills in core web technologies to build lightning-fast,
+                                highly interactive applications. When I'm not coding, you can find me analyzing modern
+                                UI trends or experimenting with advanced CSS techniques like glassmorphism, fluid
+                                animations, and live grid systems.
+                            </p>
+                            <h4 style="margin-bottom: 1rem; color: var(--text-primary); font-size: 1.1rem;">Core
+                                Expertise:</h4>
+                            <ul
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; list-style: none; padding: 0; color: var(--text-secondary); font-size: 0.95rem;">
+                                <li style="display: flex; gap: 0.5rem;"><span>✨</span> Advanced CSS/SCSS</li>
+                                <li style="display: flex; gap: 0.5rem;"><span>🚀</span> Web Optimization</li>
+                                <li style="display: flex; gap: 0.5rem;"><span>📱</span> Responsive Layouts</li>
+                                <li style="display: flex; gap: 0.5rem;"><span>🎨</span> UI/UX Prototyping</li>
+                                <li style="display: flex; gap: 0.5rem;"><span>🌊</span> Fluid Interactions</li>
+                                <li style="display: flex; gap: 0.5rem;"><span>⚡</span> Clean Architecture</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- .app-wrapper -->
+
+</body>
+
+</html>
